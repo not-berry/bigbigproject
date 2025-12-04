@@ -1,6 +1,6 @@
 void createPlayer() {
   p = new FBox(gridsize*0.8,gridsize*1.3);
-  p.setPosition(11*gridsize,27*gridsize);
+  p.setPosition(20*gridsize,27*gridsize);
   
   //set visuals
   p.setFillColor(white);

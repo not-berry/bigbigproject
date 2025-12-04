@@ -11,6 +11,7 @@ color blue = #3896C6;
 
 //images
 PImage grass;
+PImage dirt;
 
 //vars
 PImage map;
@@ -43,6 +44,7 @@ void setup() {
   boxes = new ArrayList();
   
   grass = loadImage("grass.png");
+  dirt = loadImage("dirt.png");
   
   map = loadImage("bigmap.png");
   while(y < map.height) {
@@ -54,7 +56,8 @@ void setup() {
       b.setPosition(x*gridsize,y*gridsize);
       b.setStatic(true);
       b.setGrabbable(false);
-      b.attachImage(grass);
+      if(map.get(x,y-1) != black && y > 13) b.attachImage(grass);
+      else b.attachImage(dirt);
       boxes.add(b);
       world.add(b);
     } else if(c == dark) {
@@ -82,6 +85,7 @@ void draw() {
   for(int i = 0; i < posX.size(); i++) {
     fill(black);
     square(posX.get(i),posY.get(i), gridsize);
+    //image(dirt, posX.get(i)-gridsize/2,posY.get(i)-gridsize/2);
   }
   world.step();
   world.draw();
