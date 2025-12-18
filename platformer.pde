@@ -39,6 +39,8 @@ void setup() {
   world = new FWorld();
   makeWorld();
   
+  FCompound ground = new FCompound();
+  
   createPlayer();
   
   boxes = new ArrayList();
@@ -59,7 +61,8 @@ void setup() {
       if(map.get(x,y-1) != black && y > 13) b.attachImage(grass);
       else b.attachImage(dirt);
       boxes.add(b);
-      world.add(b);
+      //world.add(b);
+      ground.addBody(b);
     } else if(c == dark) {
       posX.append(x*gridsize);
       posY.append(y*gridsize);
@@ -72,6 +75,8 @@ void setup() {
       y++;
     }
   }
+  ground.setStatic(true);
+  world.add(ground);
 }
 
 void draw() {
